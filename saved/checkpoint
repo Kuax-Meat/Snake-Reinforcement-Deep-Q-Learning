@@ -1,0 +1,2 @@
+model_checkpoint_path: "snake.ckpt-850000"
+all_model_checkpoint_paths: "snake.ckpt-850000"
