@@ -2,7 +2,7 @@
 
 # Play Snake with Deep Q-Learning
 #### by Jae-Hyeong, Sim([@Kuax-Meat](https://github.com/Kuax-Meat/))
-If you have any question, suggest a issue or send an email to me. `mirelurk at kuax.org`
+If you have any question, suggest an issue or send an email to me. `mirelurk at kuax.org`
 
 ## 1. Introduction
 This repo is an agent that plays `snake` game with Google DeepMind's DQN(NIPS 2013).
