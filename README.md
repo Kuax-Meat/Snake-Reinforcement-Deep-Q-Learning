@@ -10,12 +10,13 @@ This repo is an agent that plays `snake` game with Google DeepMind's DQN(NIPS 20
 ## 2. Dependencies
 #### Fully compatible with
 + Windows 10 Professional 64-bit
-+ Anaconda 4.2.0 64-bit
++ Anaconda 4.2.0 64-bit (Python 3.5.x)
 + Tensorflow RC 1.0
 + Pygame
++ OpenCV
 
-## 3. ConvNet
-Uses 3-ConvNet, and same as DQN Nature 2015.
+## 3. Convolutional Neural Network
+Uses 3 hidden Convolutional NN layer(same as DQN Nature 2015).
 
 ## 4. How to run
 ```
