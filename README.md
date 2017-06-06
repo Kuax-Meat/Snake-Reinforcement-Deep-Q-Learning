@@ -24,7 +24,7 @@ Uses 3 hidden Convolutional NN layer(same as DQN Nature 2015).
 ```
 
 ## 5. Result
-Details of `Snake` for 5 hours(775,136 Frames and 63,033 Episodes) with Nvidia Geforce GTX 1070
+Details of `Snake` for 8 hours(1,383,950 Frames and 69,989 Episodes) with Nvidia Geforce GTX 1070
 ![QValue](./img/avg_qv.jpg)
 ![AvgScore](./img/avg_score.jpg)
 
