@@ -1,4 +1,4 @@
-![DQN-Snake](./img/logo.jpg)
+![DQN-Snake](./img/logo2.png)
 
 # Play Snake with Deep Q-Learning
 #### by Jae-Hyeong, Sim([@Kuax-Meat](https://github.com/Kuax-Meat/))
