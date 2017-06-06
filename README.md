@@ -15,7 +15,7 @@ This repo is an agent that plays `snake` game with Google DeepMind's DQN(NIPS 20
 + Pygame
 
 ## 3. ConvNet
-Uses 3-ConvNet, and same as DQN Nature 2015.
+Uses 3 hidden Convolutional NN layer(same as DQN Nature 2015).
 
 ## 4. How to run
 ```
