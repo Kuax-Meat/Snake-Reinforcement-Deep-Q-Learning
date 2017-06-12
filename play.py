@@ -16,7 +16,7 @@ class DQN:
         # episode - one round
         self.epoch = 0
         self.episode = 0
-        self.observe = 10000
+        self.observe = 500000
         # discount factor
         self.discft = DISCFT
         # FLAG
@@ -96,35 +96,11 @@ class DQN:
         if checkpoint and checkpoint.model_checkpoint_path:
             self.saver.restore(self.session, checkpoint.model_checkpoint_path)
     
-    def train(self):
-        # DQN
-        minibatch = random.sample(self.repmem, self.batchsize)
-        s_batch = [data[0] for data in minibatch]
-        a_batch = [data[1] for data in minibatch]
-        r_batch = [data[2] for data in minibatch]
-        s_t1_batch = [data[3] for data in minibatch]
-
-        y_batch = []
-        Q_batch = self.output.eval(feed_dict={self.input : s_t1_batch})
-        for i in range(0,self.batchsize):
-            done = minibatch[i][4]
-            if done:
-                y_batch.append(r_batch[i])
-            else:
-                y_batch.append(r_batch[i] + self.discft * np.max(Q_batch[i]))
-
-        self.optimize.run(feed_dict={self.y : y_batch, self.a : a_batch, self.input : s_batch})
-
-        if self.epoch % 30000 == 0:
-            self.saver.save(self.session, 'saved/' + 'snake.ckpt', global_step = self.epoch)
-
     def addReplay(self, s_t1, action, reward, done):
         tmp = np.append(self.s_t[:,:,1:], s_t1, axis = 2)
         self.repmem.append((self.s_t, action, reward, tmp, done))
         if len(self.repmem) > self.REPLAYMEM:
             self.repmem.popleft()
-        if self.epoch > self.observe:
-            self.train()
 
         self.s_t = tmp
         self.epoch += 1
@@ -147,10 +123,6 @@ class DQN:
             idx = np.argmax(Q_val)
             action[idx] = 1
 
-        # change episilon
-        if self.epsilon > self.finep and self.epoch > self.observe:
-            self.epsilon -= (1 - self.finep) / 500000
-
         return action
 
     def initState(self, state):
@@ -166,7 +138,7 @@ class agent:
     def run(self):
         # initialize
         # discount factor 0.99
-        ag = DQN(0.99, 0, 1, 0.001, 50000, 32, 4)
+        ag = DQN(0.99, 0, 0.001, 0.001, 50000, 32, 4)
         g = game.gameState()
         a_0 = np.array([1, 0, 0, 0])
         s_0, r_0, d = g.frameStep(a_0)
@@ -178,6 +150,7 @@ class agent:
             s_t1, r, done = g.frameStep(a)
             s_t1 = self.screen_handle(s_t1)
             ts, qv = ag.addReplay(s_t1, a, r, done)
+            # for Summary
             if done == True:
                 sc, ep = g.retScore()
                 print(ts,",",qv,",",ep, ",", sc)
