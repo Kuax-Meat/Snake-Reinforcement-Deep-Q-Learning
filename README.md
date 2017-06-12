@@ -19,6 +19,17 @@ This repo is an agent that plays `snake` game with Google DeepMind's DQN(NIPS 20
 Uses 3 hidden Convolutional NN layer(same as DQN Nature 2015).
 
 ## 4. How to run
+simply type this command.
+```
+> python play.py
+```
+
+and if you want to train,
+```
+> python train.py
+```
+
+If you want to fresh start, [comment this line](https://github.com/Kuax-Meat/Snake-DQN/blob/master/train.py#L96-L97)(insert `#` on front of the line) and type
 ```
 > python train.py
 ```
